@@ -6,4 +6,5 @@
     <color name="cream">#E9DED4</color>
     <color name="light_brown">#Ba7E5A</color>
     <color name="light_pink">#E8A48D</color>
+    <color name="transparent">#00FFFFFF</color>
 </resources>
