@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">ContactsApp</string>
+    <string name="action_settings">Settings</string>
+    <string name="customers">Clientes</string>
+    <string name="load_more">Cargar Más</string>
+    <string name="sort_by">Ordenar por:</string>
+    <string name="filter_by">Filtrar por:</string>
+    <string name="age">Edad</string>
+    <string name="surname">Apellido</string>
+    <string name="by_default">Por defecto</string>
+    <string name="none">Ninguno</string>
+    <string name="female">Femenino</string>
+    <string name="male">Masculino</string>
+    <string name="apply">Aplicar</string>
+</resources>
