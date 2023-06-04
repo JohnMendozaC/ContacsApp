@@ -10,7 +10,7 @@
         android:id="@+id/imageContact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/gender_icon"
+        app:srcCompat="@drawable/contacts_icon"
         android:layout_marginBottom="30dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
@@ -19,7 +19,7 @@
         android:background="@drawable/circle_picture_customer" />
 
     <TextView
-        android:id="@+id/textGender"
+        android:id="@+id/textContacts"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/rectangle_item_contact"
