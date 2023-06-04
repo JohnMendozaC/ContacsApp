@@ -2,20 +2,19 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cream">
 
     <ImageView
-        android:id="@+id/imageGender"
+        android:id="@+id/imageContact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/gender_icon"
         android:layout_marginBottom="30dp"
-        android:layout_marginStart="40dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:background="@drawable/circle_picture_customer" />
 
@@ -26,12 +25,11 @@
         android:background="@drawable/rectangle_item_contact"
         android:text="Mr Calvin Simmons"
         android:gravity="center"
-        android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageGender"
+        app:layout_constraintBottom_toBottomOf="@+id/imageContact"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageGender"
-        app:layout_constraintTop_toTopOf="@+id/imageGender" />
+        app:layout_constraintStart_toEndOf="@+id/imageContact"
+        app:layout_constraintTop_toTopOf="@+id/imageContact" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
