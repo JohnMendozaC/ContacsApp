@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:background="@color/cream"
-    tools:context=".MainActivity">
+    tools:context=".application.view.MainActivity">
 
         <Button
             android:id="@+id/showFilterOverlayButton"

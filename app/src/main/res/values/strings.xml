@@ -12,4 +12,5 @@
     <string name="female">Femenino</string>
     <string name="male">Masculino</string>
     <string name="apply">Aplicar</string>
+    <string name="not_found_data_of_contacts">No se encontraron contactos</string>
 </resources>

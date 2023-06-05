@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/cream">
 
-    <ImageView
-        android:id="@+id/imageContact"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/image_contact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/gender_icon"
@@ -18,8 +18,8 @@
         app:layout_constraintTop_toTopOf="parent"
         android:background="@drawable/circle_picture_customer" />
 
-    <TextView
-        android:id="@+id/textContact"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/name_contact"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/rectangle_item_contact"
@@ -27,9 +27,9 @@
         android:gravity="center"
         android:layout_marginEnd="10dp"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageContact"
+        app:layout_constraintBottom_toBottomOf="@+id/image_contact"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageContact"
-        app:layout_constraintTop_toTopOf="@+id/imageContact" />
+        app:layout_constraintStart_toEndOf="@+id/image_contact"
+        app:layout_constraintTop_toTopOf="@+id/image_contact" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
