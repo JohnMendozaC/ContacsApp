@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.example.contactsapp.FirstFragment"
+        android:name="com.example.contactsapp.application.view.home.HomeFragment"
        tools:layout="@layout/fragment_first">
 
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.example.contactsapp.SecondFragment"
+        android:name="com.example.contactsapp.application.view.SecondFragment"
         tools:layout="@layout/fragment_second">
 
         <action
