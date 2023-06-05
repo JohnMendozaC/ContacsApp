@@ -7,6 +7,7 @@ import com.example.contactsapp.domain.models.Contact
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import com.example.contactsapp.R
+import com.example.contactsapp.domain.models.Picture
 
 class ContactsViewHolder(
     private val itemContactBinding: ContactItemBinding
@@ -22,8 +23,14 @@ class ContactsViewHolder(
         with(itemContactBinding.root) {
             setOnClickListener {
                 findNavController().navigate(
-                    R.id.action_FirstFragment_to_SecondFragment, bundleOf(
-                        contactId to contact
+                    R.id.action_HomeFragment_to_ContactDetailFragment, bundleOf(
+                        pictureId to contact.picture.large,
+                        nameId to contact.name,
+                        genderId to contact.gender,
+                        usernameId to contact.username,
+                        emailId to contact.email,
+                        phoneId to contact.phone,
+                        locationId to contact.location
                     )
                 )
             }
@@ -31,6 +38,12 @@ class ContactsViewHolder(
     }
 
     companion object {
-        const val contactId = "contactId"
+        const val pictureId = "pictureId"
+        const val genderId = "genderId"
+        const val nameId = "nameId"
+        const val usernameId = "usernameId"
+        const val emailId = "emailId"
+        const val phoneId = "phoneId"
+        const val locationId = "locationId"
     }
 }

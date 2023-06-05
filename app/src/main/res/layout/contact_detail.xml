@@ -6,37 +6,29 @@
     android:layout_height="match_parent"
     android:background="@color/cream">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/dark_brown"
-        app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/profileImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/circle_picture_customer"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:srcCompat="@drawable/username_icon" />
+        android:layout_marginTop="20dp" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mr Calvin Simmons"
         android:gravity="center"
-        android:textSize="20sp"
-        android:layout_marginTop="10dp"
+        android:textSize="30sp"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="@+id/profileImageView"
         app:layout_constraintEnd_toEndOf="@+id/profileImageView"
         app:layout_constraintTop_toBottomOf="@+id/profileImageView" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageGender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -47,12 +39,11 @@
         app:layout_constraintBottom_toTopOf="@+id/imageUsername"
         android:background="@drawable/circle_icon" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textGender"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/rectangle_detail"
-        android:text="male"
         android:gravity="center"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
@@ -62,7 +53,7 @@
         app:layout_constraintStart_toEndOf="@+id/imageGender"
         app:layout_constraintTop_toTopOf="@+id/imageGender" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -73,12 +64,11 @@
         app:layout_constraintBottom_toTopOf="@+id/imageEmail"
         android:background="@drawable/circle_icon" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textUsername"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/rectangle_detail"
-        android:text="greenbutterfly293"
         android:gravity="center"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
@@ -88,7 +78,7 @@
         app:layout_constraintStart_toEndOf="@+id/imageUsername"
         app:layout_constraintTop_toTopOf="@+id/imageUsername" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -99,7 +89,7 @@
         app:layout_constraintBottom_toTopOf="@+id/imagePhone"
         android:background="@drawable/circle_icon" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -109,7 +99,6 @@
         android:gravity="center_vertical"
         android:padding="10dp"
         android:scrollbars="vertical"
-        android:text="calvin.simmons@example.com"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageEmail"
         app:layout_constraintEnd_toEndOf="parent"
@@ -118,7 +107,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageEmail"
         app:layout_constraintVertical_bias="0.0" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imagePhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -129,14 +118,13 @@
         app:layout_constraintBottom_toTopOf="@+id/imageLocation"
         android:background="@drawable/circle_icon" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textPhone"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/rectangle_detail"
-        android:text="09-8985-4380"
         android:gravity="center"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/imagePhone"
@@ -144,7 +132,7 @@
         app:layout_constraintStart_toEndOf="@+id/imagePhone"
         app:layout_constraintTop_toTopOf="@+id/imagePhone" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -155,12 +143,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="@drawable/circle_icon" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textLocation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/rectangle_detail"
-            android:text="2651 W Campbell Ave Mackay, Australian Capital Territory, Australia, 7836"
             android:textSize="20sp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
@@ -172,6 +159,5 @@
             app:layout_constraintStart_toEndOf="@+id/imageLocation"
             app:layout_constraintTop_toTopOf="@+id/imageLocation"
         />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
