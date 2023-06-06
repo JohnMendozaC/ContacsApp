@@ -7,7 +7,6 @@ import com.example.contactsapp.domain.models.Contact
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import com.example.contactsapp.R
-import com.example.contactsapp.domain.models.Picture
 
 class ContactsViewHolder(
     private val itemContactBinding: ContactItemBinding

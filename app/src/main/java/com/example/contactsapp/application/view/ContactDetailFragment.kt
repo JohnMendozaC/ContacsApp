@@ -1,9 +1,10 @@
 import android.Manifest
 import android.content.ContentValues
-import android.content.DialogInterface
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
@@ -12,8 +13,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.contactsapp.R
@@ -50,6 +49,12 @@ class ContactDetailFragment : Fragment() {
 
         binding.profileImageView.setOnClickListener {
             showSaveConfirmationDialog()
+        }
+        binding.textEmail.setOnClickListener {
+            sendEmail()
+        }
+        binding.textPhone.setOnClickListener {
+            makePhoneCall()
         }
     }
 
@@ -114,6 +119,17 @@ class ContactDetailFragment : Fragment() {
                 ).show()
             }
         }
+        if (requestCode == PERMISSION_REQUEST_CALL_PHONE) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                makePhoneCall()
+            } else {
+                Toast.makeText(
+                    requireContext(),
+                    R.string.without_permission,
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
     }
 
     private fun saveImage(bitmap: Bitmap) {
@@ -161,6 +177,53 @@ class ContactDetailFragment : Fragment() {
             ).show()
         }
     }
+    private fun sendEmail() {
+        val email = binding.textEmail.text.toString().trim()
+        val subject = "Contact Details"
+        val body = "Hi, I'm sharing the contact details with you."
+
+        val emailIntent = Intent(Intent.ACTION_SENDTO).apply {
+            data = Uri.parse("mailto:")
+            putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
+            putExtra(Intent.EXTRA_SUBJECT, subject)
+            putExtra(Intent.EXTRA_TEXT, body)
+
+            val drawable = binding.profileImageView.drawable as BitmapDrawable
+            val bitmap = drawable.bitmap
+            val bitmapPath = MediaStore.Images.Media.insertImage(
+                requireContext().contentResolver,
+                bitmap,
+                "ContactImage",
+                null
+            )
+            val imageUri = Uri.parse(bitmapPath)
+            putExtra(Intent.EXTRA_STREAM, imageUri)
+        }
+
+        val packageManager = requireContext().packageManager
+        if (emailIntent.resolveActivity(packageManager) != null) {
+            startActivity(emailIntent)
+        } else {
+            // No se encontró ninguna aplicación de correo electrónico instalada
+        }
+    }
+    private fun makePhoneCall() {
+        val phoneNumber = binding.textPhone.text.toString().trim()
+        val callIntent = Intent(Intent.ACTION_CALL, Uri.parse("tel:$phoneNumber"))
+
+        if (ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.CALL_PHONE
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            startActivity(callIntent)
+        } else {
+            requestPermissions(
+                arrayOf(Manifest.permission.CALL_PHONE),
+                PERMISSION_REQUEST_CALL_PHONE
+            )
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -169,5 +232,6 @@ class ContactDetailFragment : Fragment() {
 
     companion object {
         private const val PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE = 1
+        private const val PERMISSION_REQUEST_CALL_PHONE = 2
     }
 }
