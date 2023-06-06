@@ -7,40 +7,41 @@
     android:background="@color/cream">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/profileImageView"
+        android:id="@+id/profile_image_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/circle_picture_customer"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="20dp"
+        tools:srcCompat="@drawable/username_icon" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textName"
+        android:id="@+id/text_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mr Calvin Simmons"
         android:gravity="center"
         android:textSize="30sp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="@+id/profileImageView"
-        app:layout_constraintEnd_toEndOf="@+id/profileImageView"
-        app:layout_constraintTop_toBottomOf="@+id/profileImageView" />
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@+id/profile_image_view"
+        app:layout_constraintEnd_toEndOf="@+id/profile_image_view"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image_view" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imageGender"
+        android:id="@+id/image_gender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/gender_icon"
         android:layout_marginBottom="30dp"
         android:layout_marginStart="40dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/imageUsername"
+        app:layout_constraintBottom_toTopOf="@+id/image_username"
         android:background="@drawable/circle_icon" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textGender"
+        android:id="@+id/text_gender"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/rectangle_detail"
@@ -48,24 +49,24 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageGender"
+        app:layout_constraintBottom_toBottomOf="@+id/image_gender"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageGender"
-        app:layout_constraintTop_toTopOf="@+id/imageGender" />
+        app:layout_constraintStart_toEndOf="@+id/image_gender"
+        app:layout_constraintTop_toTopOf="@+id/image_gender" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imageUsername"
+        android:id="@+id/image_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/username_icon"
         android:layout_marginBottom="30dp"
         android:layout_marginStart="40dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/imageEmail"
+        app:layout_constraintBottom_toTopOf="@+id/image_email"
         android:background="@drawable/circle_icon" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textUsername"
+        android:id="@+id/text_username"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/rectangle_detail"
@@ -73,24 +74,24 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageUsername"
+        app:layout_constraintBottom_toBottomOf="@+id/image_username"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageUsername"
-        app:layout_constraintTop_toTopOf="@+id/imageUsername" />
+        app:layout_constraintStart_toEndOf="@+id/image_username"
+        app:layout_constraintTop_toTopOf="@+id/image_username" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imageEmail"
+        android:id="@+id/image_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/email_icon"
         android:layout_marginBottom="30dp"
         android:layout_marginStart="40dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/imagePhone"
+        app:layout_constraintBottom_toTopOf="@+id/image_phone"
         android:background="@drawable/circle_icon" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textEmail"
+        android:id="@+id/text_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -100,26 +101,26 @@
         android:padding="10dp"
         android:scrollbars="vertical"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageEmail"
+        app:layout_constraintBottom_toBottomOf="@+id/image_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageEmail"
-        app:layout_constraintTop_toTopOf="@+id/imageEmail"
+        app:layout_constraintStart_toEndOf="@+id/image_email"
+        app:layout_constraintTop_toTopOf="@+id/image_email"
         app:layout_constraintVertical_bias="0.0" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imagePhone"
+        android:id="@+id/image_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/phone_icon"
         android:layout_marginBottom="30dp"
         android:layout_marginStart="40dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/imageLocation"
+        app:layout_constraintBottom_toTopOf="@+id/image_location"
         android:background="@drawable/circle_icon" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textPhone"
+        android:id="@+id/text_phone"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
@@ -127,13 +128,13 @@
         android:background="@drawable/rectangle_detail"
         android:gravity="center"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imagePhone"
+        app:layout_constraintBottom_toBottomOf="@+id/image_phone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imagePhone"
-        app:layout_constraintTop_toTopOf="@+id/imagePhone" />
+        app:layout_constraintStart_toEndOf="@+id/image_phone"
+        app:layout_constraintTop_toTopOf="@+id/image_phone" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imageLocation"
+        android:id="@+id/image_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/location_icon"
@@ -144,7 +145,7 @@
         android:background="@drawable/circle_icon" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textLocation"
+            android:id="@+id/text_location"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/rectangle_detail"
@@ -154,10 +155,10 @@
             android:padding="10dp"
             android:gravity="center_vertical"
             android:scrollbars="vertical"
-            app:layout_constraintBottom_toBottomOf="@+id/imageLocation"
+            app:layout_constraintBottom_toBottomOf="@+id/image_location"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageLocation"
-            app:layout_constraintTop_toTopOf="@+id/imageLocation"
+            app:layout_constraintStart_toEndOf="@+id/image_location"
+            app:layout_constraintTop_toTopOf="@+id/image_location"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

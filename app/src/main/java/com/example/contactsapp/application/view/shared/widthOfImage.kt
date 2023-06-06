@@ -4,7 +4,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
-private const val roundingRadiusImage = 600
+private const val roundingRadiusImage = 100
 
 fun AppCompatImageView.setImageOfContact(
     imageUrl: String,

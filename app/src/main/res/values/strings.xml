@@ -13,4 +13,11 @@
     <string name="male">Masculino</string>
     <string name="apply">Aplicar</string>
     <string name="not_found_data_of_contacts">No se encontraron contactos</string>
+    <string name="save_image">Guardar imagen</string>
+    <string name="question_save_image"> ¿Desea guardar la imagen en el dispositivo?</string>
+    <string name="accept">Aceptar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="without_permission"> No se han otorgado los permisos necesarios</string>
+    <string name="image_saved_correct">Imagen guardada correctamente</string>
+    <string name="error_save_image"> Error al guardar la imagen</string>
 </resources>
