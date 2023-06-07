@@ -39,5 +39,4 @@ class ContactsRepository @Inject constructor(
         } catch (e: Exception) {
             LoadResult.Error(e)
         }
-
 }

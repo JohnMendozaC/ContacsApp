@@ -67,14 +67,18 @@ class HomeFragment : Fragment() {
 
     private fun validateLoadState() {
         (binding.rvContacts.adapter as ContactsAdapter).addLoadStateListener { loadState ->
-            if (loadState.refresh is LoadState.Loading) {
-                showLoader(true)
-            } else if (loadState.refresh is LoadState.Error) {
-                showLoader(false)
-                showError()
-            } else {
-                showLoader(false)
-                showContacts()
+            when (loadState.refresh) {
+                is LoadState.Loading -> {
+                    showLoader(true)
+                }
+                is LoadState.Error -> {
+                    showLoader(false)
+                    showError()
+                }
+                else -> {
+                    showLoader(false)
+                    showContacts()
+                }
             }
         }
     }
@@ -96,11 +100,13 @@ class HomeFragment : Fragment() {
         binding.femaleRadioButton.setOnCheckedChangeListener { _, isChecked ->
             homeViewModel.filterGender.female = isChecked
             homeViewModel.filterGender.male = !isChecked
+            homeViewModel.updateFilterGender()
         }
 
         binding.maleRadioButton.setOnCheckedChangeListener { _, isChecked ->
             homeViewModel.filterGender.male = isChecked
             homeViewModel.filterGender.female = !isChecked
+            homeViewModel.updateFilterGender()
         }
 
         binding.noneRadioButton.setOnCheckedChangeListener { _, isChecked ->
@@ -110,7 +116,6 @@ class HomeFragment : Fragment() {
         }
 
         binding.applyFilterButton.setOnClickListener {
-            homeViewModel.updateFilterGender()
             refreshContacts()
             popupWindow.dismiss()
         }
@@ -136,11 +141,13 @@ class HomeFragment : Fragment() {
         binding.ageRadioButton.setOnCheckedChangeListener { _, isChecked ->
             homeViewModel.filterOrder.age = isChecked
             homeViewModel.filterOrder.last = !isChecked
+            homeViewModel.updateFilterOrder()
         }
 
         binding.surnameRadioButton.setOnCheckedChangeListener { _, isChecked ->
             homeViewModel.filterOrder.last = isChecked
             homeViewModel.filterOrder.age = !isChecked
+            homeViewModel.updateFilterOrder()
         }
 
         binding.byDefaultRadioButton.setOnCheckedChangeListener { _, isChecked ->
@@ -150,7 +157,6 @@ class HomeFragment : Fragment() {
         }
 
         binding.applySortedButton.setOnClickListener {
-            homeViewModel.updateFilterOrder()
             refreshContacts()
             popupWindow.dismiss()
         }

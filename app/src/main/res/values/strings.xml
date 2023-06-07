@@ -21,4 +21,6 @@
     <string name="image_saved_correct">Imagen guardada correctamente</string>
     <string name="not_found_app_email">No se encontró ninguna aplicación de correo electrónico instalada</string>
     <string name="error_save_image"> Error al guardar la imagen</string>
+    <string name="contact_details"> Contact Details</string>
+    <string name="message_email"> Hi, we sharing the contact details with you.</string>
 </resources>

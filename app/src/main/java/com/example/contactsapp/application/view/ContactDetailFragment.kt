@@ -17,6 +17,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import com.example.contactsapp.R
 import com.example.contactsapp.application.view.home.ContactsViewHolder.Companion.emailId
@@ -172,40 +173,48 @@ class ContactDetailFragment : Fragment() {
         }
     }
 
-    private fun sendEmail() {
-        val email = binding.textEmail.text.toString().trim()
-        val subject = "Contact Details"
-        val body = "Hi, I'm sharing the contact details with you."
+        private fun sendEmail() {
+            val email = binding.textEmail.text.toString().trim()
+            val subject = getString(R.string.contact_details)
+            val body = getString(R.string.message_email)
 
-        val emailIntent = Intent(Intent.ACTION_SENDTO).apply {
-            data = Uri.parse("mailto:")
-            putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
-            putExtra(Intent.EXTRA_SUBJECT, subject)
-            putExtra(Intent.EXTRA_TEXT, body)
+            val imageBitmap = (binding.profileImageView.drawable as BitmapDrawable).bitmap
+            val fileName = "${binding.textUsername.text}.jpg"
+            val dir = requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+            val imageFile = File(dir, fileName)
 
-            val drawable = binding.profileImageView.drawable as BitmapDrawable
-            val bitmap = drawable.bitmap
-            val bitmapPath = MediaStore.Images.Media.insertImage(
-                requireContext().contentResolver,
-                bitmap,
-                "ContactImage",
-                null
-            )
-            val imageUri = Uri.parse(bitmapPath)
-            putExtra(Intent.EXTRA_STREAM, imageUri)
-        }
+            FileOutputStream(imageFile).use { outputStream ->
+                imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+                outputStream.flush()
+            }
 
-        val packageManager = requireContext().packageManager
-        if (emailIntent.resolveActivity(packageManager) != null) {
-            startActivity(emailIntent)
-        } else {
-            Toast.makeText(
+            val imageUri = FileProvider.getUriForFile(
                 requireContext(),
-                R.string.not_found_app_email,
-                Toast.LENGTH_SHORT
-            ).show()
+                "com.example.contactsapp.fileprovider",
+                imageFile
+            )
+
+            val emailIntent = Intent(Intent.ACTION_SEND).apply {
+                type = "message/rfc822"
+                putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
+                putExtra(Intent.EXTRA_SUBJECT, subject)
+                putExtra(Intent.EXTRA_TEXT, body)
+
+                putExtra(Intent.EXTRA_STREAM, imageUri)
+                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            }
+
+            val packageManager = requireContext().packageManager
+            if (emailIntent.resolveActivity(packageManager) != null) {
+                startActivity(emailIntent)
+            } else {
+                Toast.makeText(
+                    requireContext(),
+                    R.string.not_found_app_email,
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
-    }
 
     private fun makePhoneCall() {
         val phoneNumber = binding.textPhone.text.toString().trim()
