@@ -1,5 +1,5 @@
 package com.example.contactsapp.infrastructure.network.vos
 
-data class StreetVo(
-    val name: String
+data class RegisteredVo(
+    val age: Int
 )

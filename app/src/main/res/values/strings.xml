@@ -19,5 +19,6 @@
     <string name="cancel">Cancelar</string>
     <string name="without_permission"> No se han otorgado los permisos necesarios</string>
     <string name="image_saved_correct">Imagen guardada correctamente</string>
+    <string name="not_found_app_email">No se encontró ninguna aplicación de correo electrónico instalada</string>
     <string name="error_save_image"> Error al guardar la imagen</string>
 </resources>

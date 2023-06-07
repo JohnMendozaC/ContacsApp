@@ -1,3 +1,5 @@
+package com.example.contactsapp.application.view
+
 import android.Manifest
 import android.content.ContentValues
 import android.content.Intent
@@ -13,6 +15,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.contactsapp.R
@@ -34,6 +37,28 @@ class ContactDetailFragment : Fragment() {
 
     private var _binding: ContactDetailBinding? = null
     private val binding get() = _binding!!
+
+    private var requestCode = 0
+
+    private val requestPermission =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
+            if (isGranted) {
+                when (requestCode) {
+                    PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE -> {
+                        val drawable = binding.profileImageView.drawable as BitmapDrawable
+                        val bitmap = drawable.bitmap
+                        saveImage(bitmap)
+                    }
+                    PERMISSION_REQUEST_CALL_PHONE -> makePhoneCall()
+                }
+            } else {
+                Toast.makeText(
+                    requireContext(),
+                    R.string.without_permission,
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -83,6 +108,7 @@ class ContactDetailFragment : Fragment() {
             }
         builder.show()
     }
+
     private fun saveImageToGallery() {
         if (ContextCompat.checkSelfPermission(
                 requireContext(),
@@ -93,42 +119,8 @@ class ContactDetailFragment : Fragment() {
             val bitmap = drawable.bitmap
             saveImage(bitmap)
         } else {
-            requestPermissions(
-                arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
-                PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE
-            )
-        }
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                val drawable = binding.profileImageView.drawable as BitmapDrawable
-                val bitmap = drawable.bitmap
-                saveImage(bitmap)
-            } else {
-                Toast.makeText(
-                    requireContext(),
-                    R.string.without_permission,
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        }
-        if (requestCode == PERMISSION_REQUEST_CALL_PHONE) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                makePhoneCall()
-            } else {
-                Toast.makeText(
-                    requireContext(),
-                    R.string.without_permission,
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
+            requestCode = PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE
+            requestPermission.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
         }
     }
 
@@ -143,7 +135,8 @@ class ContactDetailFragment : Fragment() {
                 put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES)
             }
 
-            val imageUri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
+            val imageUri =
+                resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
             imageUri?.let {
                 val outputStream: OutputStream? = resolver.openOutputStream(it)
                 outputStream?.use { stream ->
@@ -163,7 +156,8 @@ class ContactDetailFragment : Fragment() {
                 ).show()
             }
         } else {
-            val imagesDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+            val imagesDirectory =
+                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
             val imageFile = File(imagesDirectory, filename)
             val outputStream = FileOutputStream(imageFile)
             outputStream.use { stream ->
@@ -177,6 +171,7 @@ class ContactDetailFragment : Fragment() {
             ).show()
         }
     }
+
     private fun sendEmail() {
         val email = binding.textEmail.text.toString().trim()
         val subject = "Contact Details"
@@ -204,9 +199,14 @@ class ContactDetailFragment : Fragment() {
         if (emailIntent.resolveActivity(packageManager) != null) {
             startActivity(emailIntent)
         } else {
-            // No se encontró ninguna aplicación de correo electrónico instalada
+            Toast.makeText(
+                requireContext(),
+                R.string.not_found_app_email,
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
+
     private fun makePhoneCall() {
         val phoneNumber = binding.textPhone.text.toString().trim()
         val callIntent = Intent(Intent.ACTION_CALL, Uri.parse("tel:$phoneNumber"))
@@ -218,10 +218,8 @@ class ContactDetailFragment : Fragment() {
         ) {
             startActivity(callIntent)
         } else {
-            requestPermissions(
-                arrayOf(Manifest.permission.CALL_PHONE),
-                PERMISSION_REQUEST_CALL_PHONE
-            )
+            requestCode = PERMISSION_REQUEST_CALL_PHONE
+            requestPermission.launch(Manifest.permission.CALL_PHONE)
         }
     }
 

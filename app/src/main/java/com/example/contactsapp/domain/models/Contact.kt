@@ -11,6 +11,5 @@ data class Contact(
     val username: String,
     val email: String,
     val phone: String,
-    val cell: String,
     val location: String
 ) : Parcelable

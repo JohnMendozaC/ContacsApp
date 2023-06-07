@@ -13,13 +13,11 @@ fun List<ContactVo>.toContactList() = this.map {
         username = it.login.username,
         email = it.email,
         phone = it.phone,
-        cell = it.cell,
-        location = "${it.location.street.street} ${it.location.city} ${it.location.state} ${it.location.postcode}"
+        location = "${it.location.street.name} ${it.location.city} ${it.location.state} ${it.location.postcode}"
     )
 }
 
 private fun PictureVo.toPicture() = Picture(
     large = this.large,
-    medium = this.medium,
-    thumbnail = this.thumbnail
+    medium = this.medium
 )
