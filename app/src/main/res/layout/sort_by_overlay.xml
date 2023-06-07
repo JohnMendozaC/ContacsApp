@@ -1,52 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:background="@color/cream"
-android:padding="16dp">
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/cream"
+    android:padding="16dp">
 
 <com.google.android.material.textview.MaterialTextView
-    android:id="@+id/sortTitle"
+    android:id="@+id/sort_title"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/sort_by"
+    android:textColor="@color/black"
     android:textAppearance="?attr/textAppearanceHeadline6"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
 
 <com.google.android.material.radiobutton.MaterialRadioButton
-    android:id="@+id/ageRadioButton"
+    android:id="@+id/age_radio_button"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/age"
+    android:textColor="@color/black"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/sortTitle" />
+    app:layout_constraintTop_toBottomOf="@+id/sort_title" />
 
 <com.google.android.material.radiobutton.MaterialRadioButton
-    android:id="@+id/surnameRadioButton"
+    android:id="@+id/surname_radio_button"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/surname"
+    android:textColor="@color/black"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/ageRadioButton" />
+    app:layout_constraintTop_toBottomOf="@+id/age_radio_button" />
 
 <com.google.android.material.radiobutton.MaterialRadioButton
-    android:id="@+id/byDefaultRadioButton"
+    android:id="@+id/by_default_radio_button"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/by_default"
+    android:textColor="@color/black"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/surnameRadioButton" />
+    app:layout_constraintTop_toBottomOf="@+id/surname_radio_button" />
 
 <com.google.android.material.button.MaterialButton
-    android:id="@+id/applyFilterButton"
+    android:id="@+id/apply_sorted_button"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/apply"
     android:textColor="@color/white"
     android:backgroundTint="@color/dark_brown"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/byDefaultRadioButton" />
+    app:layout_constraintTop_toBottomOf="@+id/by_default_radio_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

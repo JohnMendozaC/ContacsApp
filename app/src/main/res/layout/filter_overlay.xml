@@ -1,52 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 android:layout_width="match_parent"
 android:layout_height="wrap_content"
-    android:background="@color/cream"
+android:background="@color/cream"
 android:padding="16dp">
 
 <com.google.android.material.textview.MaterialTextView
-    android:id="@+id/filterTitle"
+    android:id="@+id/filter_title"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/filter_by"
+    android:textColor="@color/black"
     android:textAppearance="?attr/textAppearanceHeadline6"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
 
 <com.google.android.material.radiobutton.MaterialRadioButton
-    android:id="@+id/femaleRadioButton"
+    android:id="@+id/female_radio_button"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/female"
+    android:textColor="@color/black"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/filterTitle" />
+    app:layout_constraintTop_toBottomOf="@+id/filter_title" />
 
 <com.google.android.material.radiobutton.MaterialRadioButton
-    android:id="@+id/maleRadioButton"
+    android:id="@+id/male_radio_button"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/male"
+    android:textColor="@color/black"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/femaleRadioButton" />
+    app:layout_constraintTop_toBottomOf="@+id/female_radio_button" />
 
 <com.google.android.material.radiobutton.MaterialRadioButton
-    android:id="@+id/noneRadioButton"
+    android:id="@+id/none_radio_button"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/none"
+    android:textColor="@color/black"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/maleRadioButton" />
+    app:layout_constraintTop_toBottomOf="@+id/male_radio_button" />
 
 <com.google.android.material.button.MaterialButton
-    android:id="@+id/applyFilterButton"
+    android:id="@+id/apply_filter_button"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/apply"
+    android:textColor="@color/white"
     android:backgroundTint="@color/dark_brown"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/noneRadioButton" />
+    app:layout_constraintTop_toBottomOf="@+id/none_radio_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

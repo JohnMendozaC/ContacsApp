@@ -11,6 +11,6 @@ data class ContactVo(
     val login: LoginVo,
     val email: String,
     val phone: String,
-    val cell: String,
+    val registered: RegisteredVo,
     val location: LocationVo
 )
